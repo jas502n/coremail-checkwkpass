@@ -2,6 +2,22 @@
 
 ## 检查邮件系统弱密码用户
 
+## 附录：
+
+从邮件系统导出邮件地址和加密后密码的sql语句：
+
+```
+select concat(a.user_id,'@',b.domain_name), left(c.password,38) from td_user a, td_domain b, cm_user_info c where a.domain_id=b.domain_id and a.org_id=c.org_id and a.user_id=c.user_id order by b.domain_name, a.user_id;
+```
+
+把上述sql存为文件 exportpass.sql，执行
+```
+/home/coremail/bin/mysql_cm --skip-column-names cmxt < exportpass.sql > email.pass.txt
+```
+
+![image](https://user-images.githubusercontent.com/16593068/211709925-637fe306-5b27-4ee5-9765-e1db64b11178.png)
+
+
 感谢清华大学 马老师 提供弱密码库。
 
 思路：
@@ -39,17 +55,5 @@ enc2 0秒钟
 enc8 1秒钟
 ```
 
-## 附录：
-
-从邮件系统导出邮件地址和加密后密码的sql语句：
-
-```
-select concat(a.user_id,'@',b.domain_name), left(c.password,38) from td_user a, td_domain b, cm_user_info c where a.domain_id=b.domain_id and a.org_id=c.org_id and a.user_id=c.user_id order by b.domain_name, a.user_id;
-```
-
-把上述sql存为文件 exportpass.sql，执行
-```
-/home/coremail/bin/mysql_cm --skip-column-names cmxt < exportpass.sql > email.pass.txt
-```
 
 即可导出
