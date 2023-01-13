@@ -2,12 +2,15 @@
 
 ## 检查邮件系统弱密码用户
 
+![image](https://user-images.githubusercontent.com/16593068/212266899-1bf598db-93a8-49bf-beb7-19074177afda.png)
+
+
 ## 附录：
 
 从邮件系统导出邮件地址和加密后密码的sql语句：
 
 ```
-select concat(a.user_id,'@',b.domain_name), left(c.password,38) from td_user a, td_domain b, cm_user_info c where a.domain_id=b.domain_id and a.org_id=c.org_id and a.user_id=c.user_id order by b.domain_name, a.user_id;
+select concat(a.user_id,'@',b.domain_name), c.password from td_user a, td_domain b, cm_user_info c where a.domain_id=b.domain_id and a.org_id=c.org_id and a.user_id=c.user_id order by b.domain_name, a.user_id;
 ```
 
 ```
@@ -28,6 +31,8 @@ select concat(a.user_id,'@',b.domain_name), left(c.password,38) from td_user a, 
 {enc15}6b2049838378330f
 {enc16}123456
 ```
+![image](https://user-images.githubusercontent.com/16593068/212266463-7688ded5-4fe2-4cd9-9d7d-71595f6489b8.png)
+
 
 把上述sql存为文件 exportpass.sql，执行
 ```
@@ -52,7 +57,7 @@ select concat(a.user_id,'@',b.domain_name), left(c.password,38) from td_user a, 
 
 测试运行
 ```
-mpirun -n X ./checkwkpass -w wk_pass.txt -p testcase.txt
+mpirun --allow-run-as-root -n 2 ./checkwkpass -w wk_pass.txt -p testcase.txt
 ```
 
 正常运行
