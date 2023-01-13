@@ -10,6 +10,25 @@
 select concat(a.user_id,'@',b.domain_name), left(c.password,38) from td_user a, td_domain b, cm_user_info c where a.domain_id=b.domain_id and a.org_id=c.org_id and a.user_id=c.user_id order by b.domain_name, a.user_id;
 ```
 
+```
+{enc1}qsQ.VmFRz1wos
+{enc2}e10adc3949ba59abbe56e057f20f883e
+{enc3}9Pf28fDz
+{enc4}32ed87bdb5fdc5e9cba88547376818d4
+{enc5}$1$63beebab$4caiJdl/5RDWvtV4grmmI1
+{enc5}$1$63bef1fe$GKajrw/aG4Zye3rsRUenb.
+{enc6}fEqNCco3Yq9h5ZUglD3CZJT4lBs=
+{enc7}GmqksTiMqHvY7JeYhwdeSHnoer1tGYN2qqaGSw==
+{enc8}m7VYbdwZDfdbykmc0t/PxBFuiFQ=
+{enc9}Y49b5VrUMuxObEtsl3eD4w==
+{enc10}123456eEZkSVFla2ZCYXRydw==
+{enc11}d8913df37b24c97f28f840114d05bd110dbb2e44
+{enc12}4280d89a5a03f812751f504cc10ee8a5
+{enc13}$5$rounds=362$dna11kh7svsdbh$APv9OIDeLigfM5mE3RYlr0oH/FmdxnCfmYfeBqdm9o8
+{enc15}6b2049838378330f
+{enc16}123456
+```
+
 把上述sql存为文件 exportpass.sql，执行
 ```
 /home/coremail/bin/mysql_cm --skip-column-names cmxt < exportpass.sql > email.pass.txt
