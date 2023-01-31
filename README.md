@@ -2,6 +2,14 @@
 
 ## 检查邮件系统弱密码用户
 
+```
+如果密码是 {enc1}xxxx，crypt('密码', 'xxxx')
+如果密码是 {enc2}xxxx，md5sum('密码')，可能会再用base64编码
+如果密码是 {enc5}xxxx，crypt('密码', 'xxxx')，使用带salt MD5，非常慢
+如果密码是 {enc7}xxxx，把xxxx decode64转成2进制，密码+最后8位 SHA1 然后校验
+如果密码是 {enc8}xxxx，把xxxx decode64转成2进制，密码+最后4位 MD5 然后校验
+```
+
 ### example enc5
 ![image](https://user-images.githubusercontent.com/16593068/215650849-6ad458ba-820c-40e5-88fe-832a62cbdb2a.png)
 
