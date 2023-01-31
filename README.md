@@ -2,6 +2,10 @@
 
 ## 检查邮件系统弱密码用户
 
+#example enc5
+![image](https://user-images.githubusercontent.com/16593068/215650849-6ad458ba-820c-40e5-88fe-832a62cbdb2a.png)
+
+
 ![image](https://user-images.githubusercontent.com/16593068/212266899-1bf598db-93a8-49bf-beb7-19074177afda.png)
 
 
